@@ -6,8 +6,10 @@
 - **Docker**: You can download it from the [Docker Official Website](https://www.docker.com/).
 
 ---
+## Deploy automático funcionando 🚀
 
 ## 📦 How to Run the Project
+
 
 ### 1. Clone the repository
 
