@@ -4,7 +4,7 @@ import InternalDefenseStage from "./stages/InternalDefenseStage";
 import { MentorStage } from "./stages/MentorStage";
 import { RegistrationStage } from "./stages/RegistrationStage";
 import { ReviewerStage } from "./stages/ReviewerStage";
-import { ExternalDefenseStage } from "./stages/ExternalDefenseStage";
+import ExternalDefenseStage from "./stages/ExternalDefenseStage";
 import { Seminar } from "../models/studentProcess";
 import { steps } from "../data/steps";
 import { useProcessStore } from "../store/store";
@@ -15,7 +15,7 @@ interface ProgressTrackerProps {
   studentProcess: Seminar;
 }
 
-const ProgressTracker: FC<ProgressTrackerProps> = ({ currentStepIndex, status }) => {
+const ProgressTracker: FC<ProgressTrackerProps> = ({ currentStepIndex }) => {
   const process = useProcessStore((state) => state.process);
   const [currentStage, setCurrentStage] = useState(currentStepIndex);
   const { stage_id: stageId } = process || { stage_id: 0 };
@@ -67,7 +67,7 @@ const ProgressTracker: FC<ProgressTrackerProps> = ({ currentStepIndex, status })
         <Box className="flex items-center space-x-4 mx-5">
           <Typography variant="h6" className="font-semibold text-primary">
             {"Estado: "}
-            <span className="text-red-1 font-medium">{status}</span>
+            <span className="text-red-1 font-medium">{steps[process?.stage_id ?? 0]}</span>
           </Typography>
         </Box>
       </Box>
@@ -75,7 +75,7 @@ const ProgressTracker: FC<ProgressTrackerProps> = ({ currentStepIndex, status })
         {steps.map((label, index) => (
           <Step
             key={index}
-            completed={index < (process?.stage_id || 1)}
+            completed={index <= (process?.stage_id || 1)}
             onClick={handleStep(index)}
           >
             <StepLabel>{label}</StepLabel>
