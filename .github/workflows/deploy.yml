@@ -1,4 +1,4 @@
-name: Deploy Frontend to Vercel on Develop Push (if E2E passed)
+name: Deploy valeria-web
 
 permissions:
   contents: write
