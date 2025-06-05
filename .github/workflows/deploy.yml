@@ -26,7 +26,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
-          
+          alias-domains: ${{ secrets.DEVELOP_ALIAS_DOMAIN }}
 
   deploy-qa:
     name: Merge and Deploy QA
@@ -55,3 +55,4 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
+          alias-domains: ${{ secrets.QA_ALIAS_DOMAIN }}
